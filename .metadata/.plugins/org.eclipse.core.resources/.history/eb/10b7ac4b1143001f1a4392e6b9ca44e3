@@ -1,0 +1,10 @@
+package com.spring.rest.controller.DTO;
+
+import java.time.LocalDate;
+
+import com.spring.domain.entity.enums.OrderStatus;
+
+public class OrderDTO {
+	private OrderStatus status;
+	private LocalDate orderDate;
+}

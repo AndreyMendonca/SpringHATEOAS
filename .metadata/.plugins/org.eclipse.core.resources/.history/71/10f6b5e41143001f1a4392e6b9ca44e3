@@ -1,0 +1,33 @@
+package com.spring.rest.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import com.spring.domain.entity.Order;
+import com.spring.service.OrderService;
+
+@RestController
+@RequestMapping("api/orders")
+public class OrderController {
+	
+	@Autowired
+	private OrderService service;
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public Order save(@RequestBody Order order) {
+		return service.save(order);
+	}
+	
+	public Order findById(@PathVariable Long id) {
+		return service.findById(id)
+				.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not exist"));
+	}
+	
+}
