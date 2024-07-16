@@ -1,0 +1,24 @@
+package com.spring.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.spring.domain.entity.Client;
+import com.spring.domain.repository.ClientRepository;
+
+public class ClientService {
+	
+	@Autowired
+	private ClientRepository repository;
+	
+	public Client save(Client client) {
+		return repository.save(client);
+	}
+	
+	public Optional<Client> findById(Long id){
+		return repository.findById(id);
+	}
+	
+	
+}

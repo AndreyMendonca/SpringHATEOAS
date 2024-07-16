@@ -1,0 +1,40 @@
+package com.spring.service;
+
+import java.util.Optional;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.spring.domain.entity.Client;
+import com.spring.domain.repository.ClientRepository;
+import com.spring.rest.controller.DTO.ClientDTO;
+
+@Service
+public class ClientService {
+	
+	@Autowired
+	private ClientRepository repository;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	public ClientDTO save(Client client) {
+		client =  repository.save(client);
+		return modelMapper.map(client, ClientDTO.class);
+	}
+	
+	public Optional<ClientDTO> findById(Long id){
+		Optional<Client> client = repository.findById(id);
+		Optional<ClientDTO> dto;
+		if(client.isPresent()) {
+			ClientDto  dto = modelMapper.map(client.get(), ClientDTO.class);
+			return Optional.of(dto);
+		}else {
+			dto = Optional.of(modelMapper.map(client.get(), ClientDTO.class));
+		}
+		return dto;
+	}
+	
+	
+}
