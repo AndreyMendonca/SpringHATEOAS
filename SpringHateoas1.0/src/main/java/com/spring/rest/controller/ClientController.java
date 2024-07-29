@@ -1,5 +1,8 @@
 package com.spring.rest.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,5 +43,17 @@ public class ClientController {
 					return dto;
 				})
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found id: " + id));
+	}
+	
+	@GetMapping
+	public List<ClientDTO> findAll() {
+		List<Client> clients = service.findAll();
+		
+		List<ClientDTO> clientsDTOS = new ArrayList<>();
+		for(Client c : clients) {
+			clientsDTOS.add(modelMapper.map(c, ClientDTO.class));
+		}
+		
+		return clientsDTOS;
 	}
 }

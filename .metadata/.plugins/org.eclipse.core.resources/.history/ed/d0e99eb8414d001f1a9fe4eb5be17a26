@@ -1,0 +1,56 @@
+package com.spring.rest.controller;
+
+import java.util.List;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
+
+import org.springframework.hateoas.EntityModel;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+
+import com.spring.domain.entity.Client;
+import com.spring.rest.controller.DTO.ClientDTO;
+import com.spring.service.ClientService;
+
+@RestController
+@RequestMapping("api/hateoas/c")
+public class HClientController {
+	@Autowired
+	private ClientService service;
+	
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@PostMapping()
+	@ResponseStatus(HttpStatus.CREATED)
+	public ClientDTO save(@RequestBody Client client) {
+		return service.save(client);
+	}
+	
+	@GetMapping("/{id}")
+	public ClientDTO findById(@PathVariable Long id) {
+		return service.findById(id)
+				.map(client -> {
+					ClientDTO dto = modelMapper.map(client, ClientDTO.class);
+					dto.add(LinkTo(methodOn(HClientController.class).findAll()).withRel("List Clients"));
+					return dto;
+				})
+				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found id: " + id));
+	}
+	
+	@GetMapping()
+	public List<ClientDTO> findAll(){
+		List<ClientDTO> dtos = service.findAll();
+		
+		return dtos;
+	}
+}

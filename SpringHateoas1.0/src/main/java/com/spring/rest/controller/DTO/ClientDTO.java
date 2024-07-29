@@ -2,14 +2,18 @@ package com.spring.rest.controller.DTO;
 
 import java.time.LocalDate;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.springframework.hateoas.RepresentationModel;
 
-@Data
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClientDTO {
+public class ClientDTO extends RepresentationModel<ClientDTO> {
 	private String name;
 	private String cpf;
 	private String email;

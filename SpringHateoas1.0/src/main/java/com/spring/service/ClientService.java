@@ -1,5 +1,6 @@
 package com.spring.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -29,5 +30,9 @@ public class ClientService {
 		return repository.findById(id);
 	}
 	
+	public List<Client> findAll(){
+		return repository.findAll();
+		
+	}
 	
 }

@@ -3,21 +3,25 @@ package com.spring.domain.entity;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import org.springframework.hateoas.RepresentationModel;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name="tb_client")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Client implements Serializable {
+public class Client extends RepresentationModel<Client> implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
