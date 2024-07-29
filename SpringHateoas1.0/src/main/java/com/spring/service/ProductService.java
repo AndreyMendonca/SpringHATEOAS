@@ -20,6 +20,7 @@ public class ProductService {
 	
 	public ProductDTO save(Product product) {
 		product =  repository.save(product);
+		System.out.println("ID PRODUTO" + product.getId());
 		return modelMapper.map(product, ProductDTO.class);
 	}
 	

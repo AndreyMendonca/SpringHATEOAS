@@ -1,6 +1,7 @@
 package com.spring.rest.controller.DTO;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.spring.domain.entity.enums.OrderStatus;
 
@@ -15,4 +16,5 @@ public class OrderResponseDTO {
 	private OrderStatus status;
 	private LocalDate orderDate;
 	private ClientDTO client;
+	private List<ProductDTO> products;
 }

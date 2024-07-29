@@ -21,6 +21,7 @@ public class ClientService {
 	
 	public ClientDTO save(Client client) {
 		client =  repository.save(client);
+		System.out.println("ID CLIENTE" + client.getId());
 		return modelMapper.map(client, ClientDTO.class);
 	}
 	
