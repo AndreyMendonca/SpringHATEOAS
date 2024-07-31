@@ -1,0 +1,44 @@
+package com.spring.domain.entity.hateoas;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@AllArgsConstructor
+@Data
+public class customHateoas {
+	private String rel;
+    private String href;
+    private String action;
+
+    public customHateoas(String rel, String href, String action) {
+        this.rel = rel;
+        this.href = href;
+        this.action = action;
+    }
+
+    // Getters e Setters
+
+    public String getRel() {
+        return rel;
+    }
+
+    public void setRel(String rel) {
+        this.rel = rel;
+    }
+
+    public String getHref() {
+        return href;
+    }
+
+    public void setHref(String href) {
+        this.href = href;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
+}

@@ -1,5 +1,0 @@
-package com.spring.domain.repository;
-
-public interface ProductRepository implements Serializable<Product, Long>{
-
-}

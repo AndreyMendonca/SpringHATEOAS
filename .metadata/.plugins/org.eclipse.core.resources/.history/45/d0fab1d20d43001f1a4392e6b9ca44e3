@@ -1,9 +1,0 @@
-package com.spring.domain.repository;
-
-import java.io.Serializable;
-
-import com.spring.domain.entity.Product;
-
-public interface ProductRepository extends Serializable<Product, Long>{
-
-}

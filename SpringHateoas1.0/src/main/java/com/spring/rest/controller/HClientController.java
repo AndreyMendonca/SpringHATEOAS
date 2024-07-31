@@ -9,6 +9,8 @@ import java.util.List;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,7 +36,11 @@ public class HClientController {
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
 	public ClientDTO save(@RequestBody Client client) {
-		return service.save(client);
+		ClientDTO dto = service.save(client);
+		dto.add(linkTo(methodOn(HClientController.class).findById(client.getId())).withSelfRel());
+		dto.add(linkTo(methodOn(HClientController.class).findAll()).withRel("Clients List"));
+		dto.add(linkTo(methodOn(HClientController.class).delete(client.getId())).withRel("Delete Client"));
+		return dto;
 	}
 	
 	@GetMapping("/{id}")
@@ -42,7 +48,9 @@ public class HClientController {
 		return service.findById(id)
 				.map(client -> {
 					ClientDTO dto = modelMapper.map(client, ClientDTO.class);
+					dto.add(linkTo(methodOn(HClientController.class).findById(client.getId())).withSelfRel());
 					dto.add(linkTo(methodOn(HClientController.class).findAll()).withRel("Clients List"));
+					dto.add(linkTo(methodOn(HClientController.class).delete(client.getId())).withRel("Delete Client"));
 					return dto;
 				})
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found id: " + id));
@@ -51,20 +59,19 @@ public class HClientController {
 	@GetMapping()
 	public List<ClientDTO> findAll(){
 		List<Client> clients = service.findAll();
-		
 		List<ClientDTO> clientsDTO = new ArrayList<>();
-		
 		for(Client c : clients) {
 			long id = c.getId();
-
 			ClientDTO dto = (modelMapper.map(c, ClientDTO.class));
 			dto.add(linkTo(methodOn(HClientController.class).findById(id)).withSelfRel());
-			
 			clientsDTO.add(dto);
 		}
-		
-		
-		
 		return clientsDTO;
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Long id){
+		service.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 }

@@ -24,16 +24,12 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseStatus"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
     <fullyQualifiedTypeName name="org.springframework.web.server.ResponseStatusException"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="com.spring.domain.entity.enums.OrderStatus"/>
     <fullyQualifiedTypeName name="jakarta.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="org.apache.catalina.mapper.Mapper"/>
-    <fullyQualifiedTypeName name="com.spring.domain.entity.Order"/>
     <fullyQualifiedTypeName name="com.spring.domain.repository.ClientRepository"/>
     <fullyQualifiedTypeName name="com.spring.domain.entity.Client"/>
     <fullyQualifiedTypeName name="com.spring.rest.controller.DTO.ClientOrderDTO"/>
-    <fullyQualifiedTypeName name="lombok.Data"/>
-    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
@@ -41,5 +37,16 @@
     <fullyQualifiedTypeName name="java.util.Collection"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="org.springframework.cglib.core.CollectionUtils"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="org.springframework.hateoas.RepresentationModel"/>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="com.spring.domain.entity.Order"/>
+    <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.spring.domain.entity.hateoas.customHateoas"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
 </qualifiedTypeNameHistroy>

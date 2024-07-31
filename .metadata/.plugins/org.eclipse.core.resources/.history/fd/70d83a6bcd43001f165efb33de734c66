@@ -1,5 +1,0 @@
-package com.spring.rest.controller.DTO;
-
-public class OrderResponseDTO {
-
-}

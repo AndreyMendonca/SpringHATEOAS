@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.spring.domain.entity.Client;
-import com.spring.rest.controller.DTO.ClientDTO;
+import com.spring.rest.controller.DTO.ClientDTO2;
 import com.spring.service.ClientService;
 
 @RestController
@@ -31,27 +31,27 @@ public class ClientController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public ClientDTO save(@RequestBody Client client) {
-		return service.save(client);
+	public ClientDTO2 save(@RequestBody Client client) {
+		return service.save2(client);
 	}
 	
 	@GetMapping("/{id}")
-	public ClientDTO findById(@PathVariable Long id) {
+	public ClientDTO2 findById(@PathVariable Long id) {
 		return service.findById(id)
 				.map(client -> {
-					ClientDTO dto = modelMapper.map(client, ClientDTO.class);
+					ClientDTO2 dto = modelMapper.map(client, ClientDTO2.class);
 					return dto;
 				})
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found id: " + id));
 	}
 	
 	@GetMapping
-	public List<ClientDTO> findAll() {
+	public List<ClientDTO2> findAll() {
 		List<Client> clients = service.findAll();
 		
-		List<ClientDTO> clientsDTOS = new ArrayList<>();
+		List<ClientDTO2> clientsDTOS = new ArrayList<>();
 		for(Client c : clients) {
-			clientsDTOS.add(modelMapper.map(c, ClientDTO.class));
+			clientsDTOS.add(modelMapper.map(c, ClientDTO2.class));
 		}
 		
 		return clientsDTOS;

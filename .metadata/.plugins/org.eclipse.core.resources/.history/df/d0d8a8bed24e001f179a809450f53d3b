@@ -1,0 +1,5 @@
+package com.spring.domain.entity.hateoas;
+
+public class customHateoas {
+
+}

@@ -15,6 +15,6 @@ import lombok.NoArgsConstructor;
 public class OrderResponseDTO {
 	private OrderStatus status;
 	private LocalDate orderDate;
-	private ClientDTO client;
+	private ClientDTO2 client;
 	private List<ProductDTO> products;
 }

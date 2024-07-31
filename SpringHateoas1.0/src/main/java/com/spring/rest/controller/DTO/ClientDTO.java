@@ -1,8 +1,12 @@
 package com.spring.rest.controller.DTO;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.hateoas.RepresentationModel;
+
+import com.spring.domain.entity.hateoas.customHateoas;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,4 +23,5 @@ public class ClientDTO extends RepresentationModel<ClientDTO> {
 	private String email;
 	private String phone;
 	private LocalDate birthday;
+	private List<customHateoas> linkss = new ArrayList<>();
 }

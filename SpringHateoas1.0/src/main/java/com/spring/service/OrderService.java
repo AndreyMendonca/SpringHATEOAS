@@ -92,4 +92,8 @@ public class OrderService {
 	public Optional<Order> findById(Long id){
 		return repository.findById(id);
 	}
+	
+	public List<Order> findAll(){
+		return repository.findAll();
+	}
 }
